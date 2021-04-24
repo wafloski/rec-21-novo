@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 
-import { colors } from '../../defaultTheme';
+import { colors } from '../defaultTheme';
 
 export const AppBarWrapper = styled(AppBar)`
   background-color: ${colors.primary};

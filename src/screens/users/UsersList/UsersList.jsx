@@ -1,9 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+
+import Box from '@material-ui/core/Box';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+
+import * as S from './UsersList.styles';
 
 const UsersList = () => {
   const users = useSelector(state => state.users.data);
@@ -11,14 +13,18 @@ const UsersList = () => {
   return (
     <List>
       {users.map(user => (
-        <ListItem key={`user-${user.id}`}>
-          <ListItemText
-            primary={
-              <Typography variant="h6">{`${user.first_name} ${user.last_name}`}</Typography>
-            }
-            secondary={user.email}
-          />
-        </ListItem>
+        <S.UserItem key={`user-${user.id}`}>
+          <Box>
+            <S.UserItemInfo variant='subtitle1'>{`ID: ${user.id}`}</S.UserItemInfo>
+            <S.UserItemContent
+              primary={<S.UserItemName variant='h5'>{`${user.first_name} ${user.last_name}`}</S.UserItemName>}
+              secondary={<S.UserItemInfo variant='subtitle1'>{user.email}</S.UserItemInfo>}
+            />
+          </Box>
+          <ListItemAvatar>
+            <S.UserItemAvatar alt={`avatar-${user.first_name}${user.last_name}`} src={user.avatar} />
+          </ListItemAvatar>
+        </S.UserItem>
       ))}
     </List>
   )

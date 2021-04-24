@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Users from './users';
-import TopBar from './_shared/TopBar';
+import TopBar from './topBar';
 
 const useStyles = makeStyles(() => ({
   container: {

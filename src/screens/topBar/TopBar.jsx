@@ -7,8 +7,7 @@ const texts = {
   appName: 'Users app'
 };
 
-export default function TopBar() {
-
+const TopBar = () => {
   return (
     <S.AppBarWrapper position='static'>
       <Container maxWidth='lg'>
@@ -21,4 +20,6 @@ export default function TopBar() {
       </Container>
     </S.AppBarWrapper>
   );
-}
+};
+
+export default TopBar;

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Box from '@material-ui/core/Box'
-import Container from '@material-ui/core/Container'
+import Box from '@material-ui/core/Box';
+import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
@@ -22,11 +22,11 @@ const Users = () => {
   return (
     <Container maxWidth="lg">
       <Box mt={4} clone>
-        <Paper >
-          <Box p={2} clone>
-            <Typography variant='h5'>{texts.boxTitle}</Typography>
+        <Paper elevation='2'>
+          <Typography variant='h5'>{texts.boxTitle}</Typography>
+          <Box p={3}>
+            <UsersList />
           </Box>
-          <UsersList />
         </Paper>
       </Box>
     </Container>
