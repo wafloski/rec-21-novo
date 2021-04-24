@@ -8,6 +8,10 @@ import Typography from '@material-ui/core/Typography';
 import UsersList from './UsersList'
 import { loadUsers } from '../../redux/actions/usersActions';
 
+const texts = {
+  boxTitle: 'Users'
+};
+
 const Users = () => {
   const dispatch = useDispatch();
 
@@ -16,11 +20,11 @@ const Users = () => {
   }, [dispatch]);
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="lg">
       <Box mt={4} clone>
         <Paper >
           <Box p={2} clone>
-            <Typography variant='h3'>Users</Typography>
+            <Typography variant='h5'>{texts.boxTitle}</Typography>
           </Box>
           <UsersList />
         </Paper>

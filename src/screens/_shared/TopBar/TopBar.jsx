@@ -1,21 +1,24 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container/Container';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 
+import * as S from './TopBar.styles';
+
+const texts = {
+  appName: 'Users app'
+};
 
 export default function TopBar() {
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="md">
-        <Toolbar>
-          <Typography variant="h6" >
-            App name
-          </Typography>
-        </Toolbar>
+    <S.AppBarWrapper position='static'>
+      <Container maxWidth='lg'>
+        <S.TopBar>
+          <S.AppLogo />
+          <S.AppTitle variant='h5'>
+              {texts.appName}
+          </S.AppTitle>
+        </S.TopBar>
       </Container>
-    </AppBar>
+    </S.AppBarWrapper>
   );
 }

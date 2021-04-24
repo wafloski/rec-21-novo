@@ -61,6 +61,7 @@
     "semver": "6.3.0",
     "simple-node-logger": "^18.12.24",
     "style-loader": "0.23.1",
+    "styled-components": "^5.2.3",
     "terser-webpack-plugin": "2.3.5",
     "ts-pnp": "1.1.6",
     "url-loader": "2.3.0",
