@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { loadUsers } from '../../redux/actions/usersActions';
+
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-import UsersList from './UsersList'
-import { loadUsers } from '../../redux/actions/usersActions';
+import * as S from './Users.styles';
+import UsersList from './UsersList';
 
 const texts = {
   boxTitle: 'Users'
@@ -21,10 +23,12 @@ const Users = () => {
 
   return (
     <Container maxWidth="lg">
-      <Box mt={4} clone>
+      <Box mt={4} mb={8} clone>
         <Paper elevation='2'>
-          <Typography variant='h5'>{texts.boxTitle}</Typography>
-          <Box p={3}>
+          <S.PageTitleWrapper>
+            <Typography variant='h5'>{texts.boxTitle}</Typography>
+          </S.PageTitleWrapper>
+          <Box>
             <UsersList />
           </Box>
         </Paper>

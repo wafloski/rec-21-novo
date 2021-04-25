@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import Box from '@material-ui/core/Box';
-import List from '@material-ui/core/List';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 
 import * as S from './UsersList.styles';
@@ -11,7 +10,7 @@ const UsersList = () => {
   const users = useSelector(state => state.users.data);
 
   return (
-    <List>
+    <S.UsersListWrapper>
       {users.map(user => (
         <S.UserItem key={`user-${user.id}`}>
           <Box>
@@ -26,7 +25,7 @@ const UsersList = () => {
           </ListItemAvatar>
         </S.UserItem>
       ))}
-    </List>
+    </S.UsersListWrapper>
   )
 };
 

@@ -7,19 +7,17 @@ const texts = {
   appName: 'Users app'
 };
 
-const TopBar = () => {
-  return (
-    <S.AppBarWrapper position='static'>
-      <Container maxWidth='lg'>
-        <S.TopBar>
-          <S.AppLogo />
-          <S.AppTitle variant='h5'>
-              {texts.appName}
-          </S.AppTitle>
-        </S.TopBar>
-      </Container>
-    </S.AppBarWrapper>
-  );
-};
+const TopBar = () => (
+  <S.AppBarWrapper position='static'>
+    <Container maxWidth='lg'>
+      <S.TopBar>
+        <S.AppLogo />
+        <S.AppTitle variant='h5'>
+            {texts.appName}
+        </S.AppTitle>
+      </S.TopBar>
+    </Container>
+  </S.AppBarWrapper>
+);
 
 export default TopBar;
