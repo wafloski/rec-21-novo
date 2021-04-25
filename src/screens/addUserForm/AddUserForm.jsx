@@ -28,10 +28,10 @@ const Inputs = Object.freeze({
   }
 });
 
-const AddUserForm = ({ closeAddUserForm }) => {
-  const [name, setName] = useState('');
-  const [surname, setSurname] = useState('');
-  const [email, setEmail] = useState('');
+const AddUserForm = ({ closeAddUserForm, userToShow }) => {
+  const [name, setName] = useState(userToShow.first_name);
+  const [surname, setSurname] = useState(userToShow.last_name);
+  const [email, setEmail] = useState(userToShow.email);
 
   const dispatch = useDispatch();
 
@@ -60,7 +60,6 @@ const AddUserForm = ({ closeAddUserForm }) => {
       last_name: surname,
       email
     }));
-    console.log('send');
     closeAddUserForm();
   };
 
@@ -76,6 +75,7 @@ const AddUserForm = ({ closeAddUserForm }) => {
             variant='outlined'
             required={true}
             onChange={inputHandler}
+            defaultValue={name}
           />
           <S.FormInput
             id={Inputs.SURNAME.id}
@@ -83,6 +83,7 @@ const AddUserForm = ({ closeAddUserForm }) => {
             variant='outlined'
             required={true}
             onChange={inputHandler}
+            defaultValue={surname}
           />
           <S.FormInput
             id={Inputs.EMAIL.id}
@@ -91,6 +92,7 @@ const AddUserForm = ({ closeAddUserForm }) => {
             type='email'
             required={true}
             onChange={inputHandler}
+            defaultValue={email}
           />
           <S.ButtonsWrapper>
             <Button onClick={closeAddUserForm}>{texts.cancel}</Button>

@@ -24,13 +24,17 @@ const Users = () => {
   }, [dispatch]);
 
   const [isAddUserFormOpen, setAddUserFormOpen] = useState(false);
+  const [userToShow, setUserToShow] = useState({});
 
-  const openAddUserForm = () => setAddUserFormOpen(true);
+  const openAddUserForm = (user) => {
+    setUserToShow(user);
+    setAddUserFormOpen(true);
+  };
   const closeAddUserForm = () => setAddUserFormOpen(false);
 
-  const renderPageContent = () => isAddUserFormOpen
+  const PageContent = () => isAddUserFormOpen
     ? <Box mt={6}>
-        <AddUserForm closeAddUserForm={closeAddUserForm}/>
+        <AddUserForm closeAddUserForm={closeAddUserForm} userToShow={userToShow}/>
       </Box>
     : <Box mt={4} mb={8} clone>
         <Paper elevation={2}>
@@ -45,7 +49,7 @@ const Users = () => {
             </S.AddUserButton>
           </S.PageTitleWrapper>
           <Box>
-            <UsersList />
+            <UsersList openAddUserForm={openAddUserForm}/>
           </Box>
         </Paper>
       </Box>
@@ -53,7 +57,7 @@ const Users = () => {
 
   return (
     <Container maxWidth='lg'>
-      {renderPageContent()}
+      <PageContent />
     </Container>
   );
 };
