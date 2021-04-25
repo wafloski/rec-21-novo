@@ -9,9 +9,24 @@ const setUsers = posts => ({
   payload: posts
 });
 
+const addUser = userData => ({
+  type: USERS.ADD_USER,
+  payload: userData
+});
+
+const saveUser = userData => ({
+  type: USERS.ADD_USER_SUCCESS,
+  payload: userData
+});
+
 const setError = error => ({
   type: USERS.LOAD_FAIL,
   payload: error
 });
 
-export { loadUsers, setError, setUsers };
+const setUserAddError = error => ({
+  type: USERS.ADD_USER_FAIL,
+  payload: error
+});
+
+export { loadUsers, setError, setUsers, addUser, saveUser, setUserAddError };

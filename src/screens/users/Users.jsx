@@ -28,7 +28,7 @@ const Users = () => {
   const openAddUserForm = () => setAddUserFormOpen(true);
   const closeAddUserForm = () => setAddUserFormOpen(false);
 
-  const renderPageContent = () => !isAddUserFormOpen
+  const renderPageContent = () => isAddUserFormOpen
     ? <Box mt={6}>
         <AddUserForm closeAddUserForm={closeAddUserForm}/>
       </Box>

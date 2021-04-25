@@ -1,4 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { addUser } from '../../redux/actions/usersActions';
 
 import Button from '@material-ui/core/Button';
 
@@ -10,10 +13,19 @@ const texts = {
   submit: 'Submit to review'
 };
 
-const InputId = Object.freeze({
-  NAME: 'form-name',
-  SURNAME: 'form-surname',
-  EMAIL: 'form-email'
+const Inputs = Object.freeze({
+  NAME: {
+    id: 'first_name',
+    label: 'Name'
+  },
+  SURNAME: {
+    id: 'last_name',
+    label: 'Surname'
+  },
+  EMAIL: {
+    id: 'email',
+    label: 'Email'
+  }
 });
 
 const AddUserForm = ({ closeAddUserForm }) => {
@@ -21,50 +33,60 @@ const AddUserForm = ({ closeAddUserForm }) => {
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
 
+  const dispatch = useDispatch();
+
   const inputHandler = e => {
-    const inputId = e.target.id;
-    const inputValue = e.target.value;
-    switch(inputId) {
-      case InputId.NAME:
-        setName(inputValue);
+    const { id, value } = e.target;
+    switch(id) {
+      case Inputs.NAME.id:
+        setName(value);
         break;
-      case InputId.SURNAME:
-        setSurname(inputValue);
+      case Inputs.SURNAME.id:
+        setSurname(value);
         break;
-      case InputId.EMAIL:
-        setEmail(inputValue);
+      case Inputs.EMAIL.id:
+        setEmail(value);
         break;
       default: return;
     }
   };
 
-  console.table(name,surname,email);
-
   const isFormValid = name && surname && email;
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(addUser({
+      first_name: name,
+      last_name: surname,
+      email
+    }));
+    console.log('send');
+    closeAddUserForm();
+  };
 
   return (
     <S.AddUserFormContainer elevation={2}>
       <S.BackButton onClick={closeAddUserForm}/>
       <S.FormWrapper>
         <S.FormTitle variant='h5'>{texts.title}</S.FormTitle>
-        <form>
+        <form onSubmit={submitHandler}>
           <S.FormInput
-            id='form-name'
-            label='Name'
+            id={Inputs.NAME.id}
+            label={Inputs.NAME.label}
             variant='outlined'
             required={true}
             onChange={inputHandler}
           />
           <S.FormInput
-            id='form-surname'
-            label='Surname'
+            id={Inputs.SURNAME.id}
+            label={Inputs.SURNAME.label}
             variant='outlined'
             required={true}
             onChange={inputHandler}
           />
           <S.FormInput
-            id='form-email'
-            label='Email'
+            id={Inputs.EMAIL.id}
+            label={Inputs.EMAIL.label}
             variant='outlined'
             type='email'
             required={true}
