@@ -6,18 +6,18 @@ import { get, post } from '../api';
 
 const API_URL = 'https://reqres.in/api/users';
 
-export function* handleUsersLoad(payload) {
+export function* handleUsersLoad(query) {
   try {
-    const users = yield call(get, API_URL);
+    const users = yield call(get, API_URL, query);
     yield put(setUsers(users))
   } catch (error) {
     yield put(setError(error.toString()));
   }
 }
 
-export function* usersLoad(action) {
-  const payload = yield take(USERS.LOAD);
-  yield fork(handleUsersLoad, payload)
+export function* usersLoad() {
+  const { query } = yield take(USERS.LOAD);
+  yield fork(handleUsersLoad, query)
 }
 
 export function* handleAddUser(payload) {
@@ -29,7 +29,7 @@ export function* handleAddUser(payload) {
   }
 }
 
-export function* userAdd(action) {
+export function* userAdd() {
   const { payload } = yield take(USERS.ADD_USER);
   yield fork(handleAddUser, payload)
 }

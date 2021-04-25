@@ -32,7 +32,7 @@ const handleSuccess = response => ({
 export const get = (url, query, token) => {
   const req = axios
     .get(
-      encodeURI(url + (query || '')),
+      encodeURI(url + (`?${query}` || '')),
       token && {
         headers: {
           Authorization: `Bearer ${token}`,

@@ -1,7 +1,8 @@
 import { USERS } from '../constants';
 
-const loadUsers = () => ({
-  type: USERS.LOAD
+const loadUsers = query => ({
+  type: USERS.LOAD,
+  query: query
 });
 
 const setUsers = posts => ({

@@ -16,11 +16,13 @@ const texts = {
   addUser: '+ Add user'
 };
 
+const query = 'per_page=12';
+
 const Users = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(loadUsers());
+    dispatch(loadUsers(query));
   }, [dispatch]);
 
   const [isAddUserFormOpen, setAddUserFormOpen] = useState(false);
