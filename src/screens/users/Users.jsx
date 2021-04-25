@@ -11,7 +11,8 @@ import * as S from './Users.styles';
 import UsersList from './UsersList';
 
 const texts = {
-  boxTitle: 'Users'
+  boxTitle: 'Users',
+  addUser: '+ Add user'
 };
 
 const Users = () => {
@@ -27,6 +28,7 @@ const Users = () => {
         <Paper elevation='2'>
           <S.PageTitleWrapper>
             <Typography variant='h5'>{texts.boxTitle}</Typography>
+            <S.AddUserButton variant='contained' size='large'>{texts.addUser}</S.AddUserButton>
           </S.PageTitleWrapper>
           <Box>
             <UsersList />
