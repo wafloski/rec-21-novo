@@ -24,7 +24,7 @@ const App = () => {
       <Users />
       <Footer />
     </div>
-  )
+  );
 };
 
 export default App;

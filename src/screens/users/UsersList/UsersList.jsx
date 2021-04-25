@@ -17,7 +17,7 @@ const UsersList = () => {
             <S.UserItemInfo variant='subtitle1'>{`ID: ${user.id}`}</S.UserItemInfo>
             <S.UserItemContent
               primary={<S.UserItemName variant='h5'>{`${user.first_name} ${user.last_name}`}</S.UserItemName>}
-              secondary={<S.UserItemInfo variant='subtitle1'>{user.email}</S.UserItemInfo>}
+              secondary={<S.UserItemInfo variant='h6'>{user.email}</S.UserItemInfo>}
             />
           </Box>
           <ListItemAvatar>
